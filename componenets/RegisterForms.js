@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { Button, FormControl, FormControlLabel, FormLabel, Grid, MenuItem, Radio, RadioGroup, Stack, TextField } from '@mui/material'
+import { Notifications } from '@mui/icons-material';
+import { Backdrop, Button, Fade, FormControl, FormControlLabel, FormLabel, Grid, MenuItem, Modal, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import Image from 'next/image';
 import React, { useState } from 'react'
@@ -23,23 +24,37 @@ export default function RegisterForms() {
     const TextFields = styled(TextField)({
         '& label.Mui-focused': {
             color: 'black',
-          },
+        },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
                 borderColor: 'Black',
                 borderRadius: "10px"
             },
             '&:hover fieldset': {
-              borderImage: 'linear-gradient(to right, #F14722, #239B99) 1',
+                borderImage: 'linear-gradient(to right, #F14722, #239B99) 1',
             },
             '&.Mui-focused fieldset ': {
-              borderColor: 'black',
-            },'& label.Mui-focused': {
+                borderColor: 'black',
+            }, '& label.Mui-focused': {
                 color: 'black',
-              },
-          },
+            },
+        },
     });
-
+    const [open, setOpen] = useState(true);
+    const handleOpen = () => setOpen(register ===" "? true : false);
+    const handleClose = () => setOpen(false);
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'black',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+        color : 'white'
+    };
     return (
         <Box className="container">
             <Stack spacing={2}>
@@ -48,7 +63,6 @@ export default function RegisterForms() {
                     <h2 className="text-center company-name">Zydni Software Solution</h2></Box>
                 <Box className="company-form">
                     <form onSubmit={handleSubmit(onSubmit)} action="post" >
-                       
                         <Grid container spacing={2} className="filters mt-1 mb-2 ">
                             <Grid item lg={6} md={6} sm={12} xs={12}>
                                 <TextFields fullWidth label="First Name" variant="outlined"  {...register("firstname", {
@@ -69,7 +83,6 @@ export default function RegisterForms() {
                                 )}
                             </Grid>
                         </Grid>
-
                         <Grid container spacing={2} className="filters mt-2 mb-2">
                             <Grid item lg={6} md={6} sm={12} xs={12}>
                                 <TextFields fullWidth label="Email" type={"email"} variant="outlined" {...register("email", {
@@ -90,7 +103,6 @@ export default function RegisterForms() {
                                 )}
                             </Grid>
                         </Grid>
-
                         <Grid container spacing={2} className="filters mt-2 mb-2">
                             <Grid item lg={6} md={6} sm={12} xs={12}>
                                 <TextFields fullWidth label="Qualification" variant="outlined" {...register("Qualification", {
@@ -111,7 +123,6 @@ export default function RegisterForms() {
                                 )}
                             </Grid>
                         </Grid>
-
                         <Grid container spacing={2} className="filters mt-2 mb-2">
                             <Grid item lg={6} md={6} sm={12} xs={12}>
                                 <Grid container spacing={2} className="filters ">
@@ -187,11 +198,31 @@ export default function RegisterForms() {
                                     rows={8}
                                     variant="outlined"
                                 />
-                                <TextField  {...register("date"
-                                )} disabled sx={{ display: "none" }}  value={new Date("")} />
+
                             </Grid>
-                            {/* {...register(new Date())} */}
-                            <Button sx={{ margin: "auto" }} className="mt-5 sub-btn" type="submit" variant="contained">Submit</Button>
+                            <Button sx={{ margin: "auto" }} onClick={handleOpen} className="mt-5 sub-btn" type="submit" variant="contained">Submit</Button>
+                            <Modal
+                                aria-labelledby="transition-modal-title"
+                                aria-describedby="transition-modal-description"
+                                open={open}
+                                onClose={handleClose}
+                                closeAfterTransition
+                                BackdropComponen={Backdrop}
+                                BackdropProps={{
+                                    timeout: 500,
+                                }}
+                            >
+                                <Fade in={open}>
+                                    <Box sx={style}>
+                                        <Typography id="transition-modal-title" sx={{textAlign : 'center'}} variant="h6" component="h2">
+                                            <Notifications />
+                                        </Typography>
+                                        <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                                         Thamk You for applying. Will connect to you soon!!
+                                        </Typography>
+                                    </Box>
+                                </Fade>
+                            </Modal>
                         </Grid>
                     </form>
                 </Box>
