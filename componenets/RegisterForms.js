@@ -59,7 +59,7 @@ export default function RegisterForms() {
         <Box className="container">
             <Stack spacing={2}>
                 <Box className="company-header">
-                    <Image height={100} width={200} src="/logo.png" alt='company Logo' />
+                    <Image height={100} width={200} src="/logo.PNG" alt='company Logo' />
                     <h2 className="text-center company-name">Zydni Software Solution</h2></Box>
                 <Box className="company-form">
                     <form onSubmit={handleSubmit(onSubmit)} action="post" >
@@ -207,7 +207,7 @@ export default function RegisterForms() {
                                 open={open}
                                 onClose={handleClose}
                                 closeAfterTransition
-                                BackdropComponen={Backdrop}
+                                BackdropComponent={Backdrop}
                                 BackdropProps={{
                                     timeout: 500,
                                 }}
