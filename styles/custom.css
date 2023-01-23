@@ -1,0 +1,38 @@
+.company-header {
+    border: 2px solid transparent;   
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, #F14722, #239B99) border-box;
+     border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+}
+
+.company-name {
+    font-size: 25px;
+    font-weight: 700;
+    margin: auto 28px;
+}
+
+.company-form {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 20px;
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, #F14722, #239B99) border-box;
+}
+
+.errormsg {
+    color: red;
+}
+.sub-btn{
+    width: 100px;
+    border-radius: 20px;
+    background-color: #F14722;
+}
+.sub-btn:hover{
+    background-color: #239B99;
+}
+input#file-upload-button{
+    background-color: #F14722 !important;
+}
