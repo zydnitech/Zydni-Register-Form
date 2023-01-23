@@ -25,12 +25,12 @@
 .errormsg {
     color: red;
 }
-.sub-btn{
+.subbtn{
     width: 100px !important;
     border-radius: 20px !important;
     background-color: #F14722 !important;
 }
-.sub-btn:hover{
+.subbtn:hover{
     background-color: #239B99 !important;
 
 }

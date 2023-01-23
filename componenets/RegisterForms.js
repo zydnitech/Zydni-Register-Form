@@ -59,7 +59,7 @@ export default function RegisterForms() {
         <Box className="container">
             <Stack spacing={2}>
                 <Box className="company-header">
-                    <Image height={100} width={200} src="/image_2023_01_12T16_11_47_451Z.png" alt='company Logo' />
+                    <Image height={100} width={200} src="/logo.png" alt='company Logo' />
                     <h2 className="text-center company-name">Zydni Software Solution</h2></Box>
                 <Box className="company-form">
                     <form onSubmit={handleSubmit(onSubmit)} action="post" >
@@ -200,7 +200,7 @@ export default function RegisterForms() {
                                 />
 
                             </Grid>
-                            <Button sx={{ margin: "auto" }} onClick={handleOpen} className="mt-5 sub-btn" type="submit" variant="contained">Submit</Button>
+                            <Button sx={{ margin: "auto" }} onClick={handleOpen} className="mt-5 subbtn" type="submit" variant="contained">Submit</Button>
                             <Modal
                                 aria-labelledby="transition-modal-title"
                                 aria-describedby="transition-modal-description"
