@@ -26,11 +26,11 @@
     color: red;
 }
 .sub-btn{
-    width: 100px;
-    border-radius: 20px;
-    background-color: #F14722;
+    width: 100px !important;
+    border-radius: 20px !important;
+    background-color: #F14722 !important;
 }
 .sub-btn:hover{
-    background-color: #239B99;
+    background-color: #239B99 !important;
 
 }

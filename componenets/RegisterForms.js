@@ -40,7 +40,7 @@ export default function RegisterForms() {
             },
         },
     });
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(register ===" "? true : false);
     const handleClose = () => setOpen(false);
     const style = {
