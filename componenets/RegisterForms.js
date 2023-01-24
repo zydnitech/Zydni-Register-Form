@@ -5,7 +5,7 @@ import { Box } from '@mui/system'
 import Image from 'next/image';
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
-
+import logo from "../public/assets/logo.png"
 
 export default function RegisterForms() {
     const {
@@ -15,7 +15,11 @@ export default function RegisterForms() {
     } = useForm();
     const [data, setdata] = useState([]);
     const onSubmit = (d) => {
-        setdata(d);
+        // setdata(d);
+        fetch("http://192.168.0.101:8030/api/resumeapi", {
+            method: 'POST',
+            body: JSON.stringify(d)
+    })
     };
     console.log(data);
 
@@ -57,9 +61,15 @@ export default function RegisterForms() {
     };
     return (
         <Box className="container">
+   
             <Stack spacing={2}>
                 <Box className="company-header">
-                    <Image height={100} width={200} src="/logo.PNG" alt='company Logo' />
+                    {/* <Image height={100} width={200} src="/logo.PNG" alt='company Logo' /> */}
+                    {/* <img src={logo} alt="" /> */}
+                    <img
+                    src="/assets/logo.png"
+                    // style={{ width: "100%", height: "20vh" }}
+                  />
                     <h2 className="text-center company-name">Zydni Software Solution</h2></Box>
                 <Box className="company-form">
                     <form onSubmit={handleSubmit(onSubmit)} action="post" >

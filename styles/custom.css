@@ -1,8 +1,8 @@
 .company-header {
-    border: 1px solid transparent;   
+    border: 1px solid transparent;
     background: linear-gradient(white, white) padding-box,
-    linear-gradient(to right, #F14722, #239B99) border-box;
-     border-radius: 10px;
+        linear-gradient(to right, #F14722, #239B99) border-box;
+    border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
     display: flex;
@@ -19,18 +19,30 @@
     border-radius: 10px;
     padding: 20px;
     background: linear-gradient(white, white) padding-box,
-    linear-gradient(to right, #F14722, #239B99) border-box;
+        linear-gradient(to right, #F14722, #239B99) border-box;
 }
 
 .errormsg {
     color: red;
 }
-.subbtn{
-    width: 100px !important;
-    border-radius: 20px !important;
-    background-color: #F14722 !important;
-}
-.subbtn:hover{
-    background-color: #239B99 !important;
 
+.subbtn {
+    width: 100px;
+    border-radius: 20px;
+    background-color: #F14722;
+}
+
+.subbtn:hover {
+    background-color: #239B99;
+    animation: btnani 1s;
+}
+
+@keyframes btnani {
+    from {
+        background-color: #F14722;
+    }
+
+    to {
+        background-color: #239B99;
+    }
 }
