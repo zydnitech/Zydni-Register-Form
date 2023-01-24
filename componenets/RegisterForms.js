@@ -70,8 +70,8 @@ export default function RegisterForms() {
                 <Box className="company-header">
                     {/* <Image height={100} width={200} src="/logo.PNG" alt='company Logo' /> */}
                     {/* <img src={logo} alt="" /> */}
-                    <img src="./assets/Images/logo.png" alt="Image number 1" />
-                    <img src="./assets/Images/tt1.jpg" alt="Image number 2" />
+                    <img src="../assets/Images/logo.png" alt="Image number 1" />
+                    <img src="../assets/Images/tt1.jpg" alt="Image number 2" />
 
 
                     {/* // style={{ width: "100%", height: "20vh" }  */}
