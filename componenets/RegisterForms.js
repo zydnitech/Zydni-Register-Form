@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
-import { Notifications } from '@mui/icons-material';
+import { Notifications, TheaterComedy } from '@mui/icons-material';
 import { Backdrop, Button, Fade, FormControl, FormControlLabel, FormLabel, Grid, MenuItem, Modal, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import Image from 'next/image';
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 // import { TestImage } from "../public/assets/Images/tt1.jpg";
+
 
 export default function RegisterForms() {
     const {
@@ -60,10 +61,7 @@ export default function RegisterForms() {
         color: 'white'
     };
 
-    // LET"S CHECK BOTH FORMAT PNG AND JPG ????????
 
-
-    // yeah push it 
     // console.log("<><><", TestImage);
     return (
         <Box className="container">
@@ -72,8 +70,8 @@ export default function RegisterForms() {
                 <Box className="company-header">
                     {/* <Image height={100} width={200} src="/logo.PNG" alt='company Logo' /> */}
                     {/* <img src={logo} alt="" /> */}
-                    <img src="/assets/Images/logo.png" alt="Image number 1" />
-                    <img src="/assets/Images/tt1.jpg" alt="Image number 2" />
+                    <img src="./assets/Images/logo.png" alt="Image number 1" />
+                    <img src="./assets/Images/tt1.jpg" alt="Image number 2" />
 
 
                     {/* // style={{ width: "100%", height: "20vh" }  */}
