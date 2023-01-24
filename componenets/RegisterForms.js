@@ -5,7 +5,7 @@ import { Box } from '@mui/system'
 import Image from 'next/image';
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
-import logo from "../public/assets/logo.png"
+// import { TestImage } from "../public/assets/Images/tt1.jpg";
 
 export default function RegisterForms() {
     const {
@@ -19,7 +19,7 @@ export default function RegisterForms() {
         fetch("http://192.168.0.101:8030/api/resumeapi", {
             method: 'POST',
             body: JSON.stringify(d)
-    })
+        })
     };
     console.log(data);
 
@@ -45,7 +45,7 @@ export default function RegisterForms() {
         },
     });
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(register ===" "? true : false);
+    const handleOpen = () => setOpen(register === " " ? true : false);
     const handleClose = () => setOpen(false);
     const style = {
         position: 'absolute',
@@ -57,19 +57,26 @@ export default function RegisterForms() {
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
-        color : 'white'
+        color: 'white'
     };
+
+    // LET"S CHECK BOTH FORMAT PNG AND JPG ????????
+
+
+    // yeah push it 
+    // console.log("<><><", TestImage);
     return (
         <Box className="container">
-   
+
             <Stack spacing={2}>
                 <Box className="company-header">
                     {/* <Image height={100} width={200} src="/logo.PNG" alt='company Logo' /> */}
                     {/* <img src={logo} alt="" /> */}
-                    <img
-                    src="/assets/logo.png"
-                    // style={{ width: "100%", height: "20vh" }}
-                  />
+                    <img src="/assets/Images/logo.png" alt="Image number 1" />
+                    <img src="/assets/Images/tt1.jpg" alt="Image number 2" />
+
+
+                    {/* // style={{ width: "100%", height: "20vh" }  */}
                     <h2 className="text-center company-name">Zydni Software Solution</h2></Box>
                 <Box className="company-form">
                     <form onSubmit={handleSubmit(onSubmit)} action="post" >
@@ -224,11 +231,11 @@ export default function RegisterForms() {
                             >
                                 <Fade in={open}>
                                     <Box sx={style}>
-                                        <Typography id="transition-modal-title" sx={{textAlign : 'center'}} variant="h6" component="h2">
+                                        <Typography id="transition-modal-title" sx={{ textAlign: 'center' }} variant="h6" component="h2">
                                             <Notifications />
                                         </Typography>
                                         <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                                         Thamk You for applying. Will connect to you soon!!
+                                            Thamk You for applying. Will connect to you soon!!
                                         </Typography>
                                     </Box>
                                 </Fade>
