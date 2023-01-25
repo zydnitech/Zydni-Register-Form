@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
-import { Notifications, TheaterComedy } from '@mui/icons-material';
+import { Notifications } from '@mui/icons-material';
 import { Backdrop, Button, Fade, FormControl, FormControlLabel, FormLabel, Grid, MenuItem, Modal, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import Image from 'next/image';
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
-// import { TestImage } from "../public/assets/Images/tt1.jpg";
 
 
 export default function RegisterForms() {
@@ -17,10 +16,29 @@ export default function RegisterForms() {
     const [data, setdata] = useState([]);
     const onSubmit = (d) => {
         // setdata(d);
-        fetch("http://192.168.0.101:8030/api/resumeapi", {
+        // fetch('http://192.168.0.101:8030/api/resumeapi', {
+        //     method: 'POST',
+        //     body: JSON.stringify(d)
+        // })
+        fetch('http://192.168.0.101:8030/api/resumeapi', {
             method: 'POST',
-            body: JSON.stringify(d)
-        })
+            body: JSON.stringify({
+              FirstName: '',
+              LastName:'',
+              Email: '',
+              ContactNo:'',
+              Qualification:'',
+              SkillSet:'',
+              Experience:'',    
+              Reference:'',    
+              resume1:'',    
+            }),
+              headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+              },
+          })
+            .then((response) => response.json())
+            .then((json) => console.log(json)); 
     };
     console.log(data);
 
@@ -60,32 +78,23 @@ export default function RegisterForms() {
         p: 4,
         color: 'white'
     };
-
-
-    // console.log("<><><", TestImage);
     return (
         <Box className="container">
 
             <Stack spacing={2}>
                 <Box className="company-header">
-                    {/* <Image height={100} width={200} src="/logo.PNG" alt='company Logo' /> */}
-                    {/* <img src={logo} alt="" /> */}
-                    <img src="../assets/Images/logo.png" alt="Image number 1" />
-                    <img src="../assets/Images/tt1.jpg" alt="Image number 2" />
-
-
-                    {/* // style={{ width: "100%", height: "20vh" }  */}
+                    <Image height={100} width={200} src="/img/logo.png" alt='company Logo' />
                     <h2 className="text-center company-name">Zydni Software Solution</h2></Box>
                 <Box className="company-form">
                     <form onSubmit={handleSubmit(onSubmit)} action="post" >
                         <Grid container spacing={2} className="filters mt-1 mb-2 ">
                             <Grid item lg={6} md={6} sm={12} xs={12}>
-                                <TextFields fullWidth label="First Name" variant="outlined"  {...register("firstname", {
+                                <TextFields fullWidth label="First Name" variant="outlined"  {...register("FirstName", {
                                     required: " Enter your firstname",
                                 })}
                                 />
-                                {errors.firstname && (
-                                    <p className="errormsg">{errors.firstname.message}</p>
+                                {errors.FirstName && (
+                                    <p className="errormsg">{errors.FirstName.message}</p>
                                 )}
                             </Grid>
                             <Grid item lg={6} md={6} sm={12} xs={12}>
@@ -100,21 +109,21 @@ export default function RegisterForms() {
                         </Grid>
                         <Grid container spacing={2} className="filters mt-2 mb-2">
                             <Grid item lg={6} md={6} sm={12} xs={12}>
-                                <TextFields fullWidth label="Email" type={"email"} variant="outlined" {...register("email", {
+                                <TextFields fullWidth label="Email" type={"email"} variant="outlined" {...register("Email", {
                                     required: " Enter your E-Mail",
                                 })}
                                 />
-                                {errors.email && (
-                                    <p className="errormsg">{errors.email.message}</p>
+                                {errors.Email && (
+                                    <p className="errormsg">{errors.Email.message}</p>
                                 )}
                             </Grid>
                             <Grid item lg={6} md={6} sm={12} xs={12}>
-                                <TextFields fullWidth label="Contact Number" type={"number"} variant="outlined" {...register("ContactNumber", {
+                                <TextFields fullWidth label="Contact Number" type={"number"} variant="outlined" {...register("ContactNo", {
                                     required: " Enter your Contact Number",
                                 })}
                                 />
-                                {errors.ContactNumber && (
-                                    <p className="errormsg">{errors.ContactNumber.message}</p>
+                                {errors.ContactNo && (
+                                    <p className="errormsg">{errors.ContactNo.message}</p>
                                 )}
                             </Grid>
                         </Grid>
@@ -129,12 +138,12 @@ export default function RegisterForms() {
                                 )}
                             </Grid>
                             <Grid item lg={6} md={6} sm={12} xs={12}>
-                                <TextFields fullWidth label="Skillsets" variant="outlined" {...register("Skillsets", {
+                                <TextFields fullWidth label="Skillsets" variant="outlined" {...register("SkillSet", {
                                     required: " Enter your Skillsets",
                                 })}
                                 />
-                                {errors.Skillsets && (
-                                    <p className="errormsg">{errors.Skillsets.message}</p>
+                                {errors.Skillset && (
+                                    <p className="errormsg">{errors.SkillSet.message}</p>
                                 )}
                             </Grid>
                         </Grid>
@@ -149,15 +158,15 @@ export default function RegisterForms() {
                                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                                 name="row-radio-buttons-group"
                                             >
-                                                <FormControlLabel value="Yes" control={<Radio />} label="Yes" {...register("experiance", {
-                                                    required: " Enter your experiance",
+                                                <FormControlLabel value="Yes" control={<Radio />} label="Yes" {...register("Experience", {
+                                                    required: " Enter your Experience",
                                                 })} />
-                                                <FormControlLabel value="No" control={<Radio />} label="No"  {...register("experiance", {
-                                                    required: " Enter your experiance",
+                                                <FormControlLabel value="No" control={<Radio />} label="No"  {...register("Experience", {
+                                                    required: " Enter your Experience",
                                                 })} />
                                             </RadioGroup>
-                                            {errors.experiance && (
-                                                <p className="errormsg">{errors.experiance.message}</p>
+                                            {errors.Experience && (
+                                                <p className="errormsg">{errors.Experience.message}</p>
                                             )}
                                         </FormControl>
                                     </Grid>
