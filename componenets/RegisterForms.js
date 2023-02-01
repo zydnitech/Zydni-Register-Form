@@ -11,7 +11,7 @@ import { Controller, useForm } from "react-hook-form";
 export default function RegisterForms() {
     const {
         register,
-        handleSubmit, setValue ,
+        handleSubmit, setValue,
         formState: { errors },
     } = useForm();
 
@@ -28,11 +28,17 @@ export default function RegisterForms() {
     const TextFields = styled(TextField)({
         '& label.Mui-focused': {
             color: 'black',
+           
+        },
+        '& label': {
+            color: 'black',
         },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
                 borderColor: 'Black',
-                borderRadius: "10px"
+                borderRadius: "10px",
+                color: "black",
+               
             },
             '&:hover fieldset': {
                 borderImage: 'linear-gradient(to right, #F14722, #239B99) 1',
@@ -40,7 +46,7 @@ export default function RegisterForms() {
             '&.Mui-focused fieldset ': {
                 borderColor: 'black',
             }, '& label.Mui-focused': {
-                color: 'black',
+                color: 'White',
             },
         },
     });
@@ -69,11 +75,10 @@ export default function RegisterForms() {
     const newdate = year + "/" + month + "/" + day;
     return (
         <Box className="container">
-
+            {/* <img src="../public/Group 6.jpg" alt="" className='pageimg' /> */}
             <Stack spacing={2}>
                 <Box className="company-header">
-                    <Image height={100} width={200} src="/img/logo.png" alt='company Logo' />
-                    <h2 className="text-center company-name">Zydni Software Solution</h2></Box>
+                    <Image height={100} width={150} className="companyLogo" src="/img/logo.png" alt='company Logo' /></Box>
                 <Box className="company-form">
                     <form onSubmit={handleSubmit(onSubmit)} action="post" >
                         <Grid container spacing={2} className="filters mt-1 mb-2 ">
@@ -148,11 +153,11 @@ export default function RegisterForms() {
                                                 name="row-radio-buttons-group"
                                             >
                                                 <FormControlLabel value="Yes" control={<Radio />} label="Yes"  {...register("Experience", {
-                                            required: " Enter your Experience",
-                                        })}/>
+                                                    required: " Enter your Experience",
+                                                })} />
                                                 <FormControlLabel value="No" control={<Radio />} label="No"  {...register("Experience", {
-                                            required: " Enter your Experience",
-                                        })}/>
+                                                    required: " Enter your Experience",
+                                                })} />
                                             </RadioGroup>
                                             {errors.Experience && (
                                                 <p className="errormsg">{errors.Experience.message}</p>
@@ -195,7 +200,6 @@ export default function RegisterForms() {
                                             className='custom-file-input' InputLabelProps={{ shrink: true }}   {...register("resume1", {
                                                 required: "Please upload your resume",
                                             })}
-
                                         />
                                         {errors.resume1 && (
                                             <p className="errormsg">{errors.resume1.message}</p>
@@ -212,11 +216,11 @@ export default function RegisterForms() {
                                     id="outlined-multiline-static"
                                     label="Comments"
                                     multiline
-                                    rows={8}
+                                    rows={9}
                                     variant="outlined"
                                 />
                             </Grid>
-                            <Button sx={{ margin: "auto" }}   onClick={() => setValue("Dates", newdate )} className="mt-5 subbtn" type="submit" variant="contained">Submit</Button>
+                            <Button sx={{ margin: "auto" }} onClick={() => setValue("Dates", newdate)} className="mt-5 subbtn" type="submit" variant="contained">Submit</Button>
                             <Modal
                                 aria-labelledby="transition-modal-title"
                                 aria-describedby="transition-modal-description"

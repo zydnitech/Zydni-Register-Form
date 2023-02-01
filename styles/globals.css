@@ -83,6 +83,10 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  color: white;
+  background-image: url(../public/Group\ 6.jpg);
+  background-repeat:no-repeat ;
+  background-position: center;
 }
 
 a {

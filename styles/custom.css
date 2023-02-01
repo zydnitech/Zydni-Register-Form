@@ -1,25 +1,24 @@
+.pageimg{
+    height: 100vh;
+    object-fit: contain;
+}
 .company-header {
     border: 1px solid transparent;
-    background: linear-gradient(white, white) padding-box,
-        linear-gradient(to right, #F14722, #239B99) border-box;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
     margin-top: 20px;
-    display: flex;
+    background-color: transparent;
 }
-
-.company-name {
-    font-size: 25px;
-    font-weight: 700;
-    margin: auto 28px;
+.companyLogo{
+    margin: auto;
+    display: block;
 }
-
 .company-form {
     border: 1px solid transparent;
     border-radius: 10px;
     padding: 20px;
-    background: linear-gradient(white, white) padding-box,
-        linear-gradient(to right, #F14722, #239B99) border-box;
+    background-color: transparent;
+    border: 2px solid black;
 }
 
 .errormsg {
@@ -64,6 +63,12 @@ input[type="radio"] {
     margin-right: 23px;
     width: 55px;
     height: 22px;
+}
+select{
+    background-color: transparent;
+}
+label{
+    color: black;
 }
 /* .custom-file-input::-webkit-file-upload-button {
     visibility: hidden;
