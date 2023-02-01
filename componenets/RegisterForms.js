@@ -2,47 +2,28 @@ import styled from '@emotion/styled';
 import { Notifications } from '@mui/icons-material';
 import { Backdrop, Button, Fade, FormControl, FormControlLabel, FormLabel, Grid, MenuItem, Modal, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
+import axios from 'axios';
 import Image from 'next/image';
 import React, { useState } from 'react'
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 
 
 export default function RegisterForms() {
     const {
         register,
-        handleSubmit,
+        handleSubmit, setValue ,
         formState: { errors },
     } = useForm();
-    const [data, setdata] = useState([]);
-    const onSubmit = (d) => {
-        // setdata(d);
-        // fetch('http://192.168.0.101:8030/api/resumeapi', {
-        //     method: 'POST',
-        //     body: JSON.stringify(d)
-        // })
-        fetch('http://192.168.0.101:8030/api/resumeapi', {
-            method: 'POST',
-            body: JSON.stringify({
-              FirstName: '',
-              LastName:'',
-              Email: '',
-              ContactNo:'',
-              Qualification:'',
-              SkillSet:'',
-              Experience:'',    
-              Reference:'',    
-              resume1:'',    
-            }),
-              headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-              },
-          })
-            .then((response) => response.json())
-            .then((json) => console.log(json)); 
-    };
-    console.log(data);
 
-    const [value, setValue] = useState('');
+    const onSubmit = (d) => {
+
+        axios.post(`http://192.168.0.101:8030/api/resumeapi`, d).then((res) => {
+            console.log('YOUR DATA IS SUBMITTED', res);
+        }).catch((e) => {
+            console.log('ERROR OCCURED', e);
+        })
+        console.log(d)
+    }
 
     const TextFields = styled(TextField)({
         '& label.Mui-focused': {
@@ -78,6 +59,14 @@ export default function RegisterForms() {
         p: 4,
         color: 'white'
     };
+
+    // get date 
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+
+    const newdate = year + "/" + month + "/" + day;
     return (
         <Box className="container">
 
@@ -138,11 +127,11 @@ export default function RegisterForms() {
                                 )}
                             </Grid>
                             <Grid item lg={6} md={6} sm={12} xs={12}>
-                                <TextFields fullWidth label="Skillsets" variant="outlined" {...register("SkillSet", {
+                                <TextFields fullWidth label="Skillset" variant="outlined" {...register("SkillSet", {
                                     required: " Enter your Skillsets",
                                 })}
                                 />
-                                {errors.Skillset && (
+                                {errors.SkillSet && (
                                     <p className="errormsg">{errors.SkillSet.message}</p>
                                 )}
                             </Grid>
@@ -151,66 +140,70 @@ export default function RegisterForms() {
                             <Grid item lg={6} md={6} sm={12} xs={12}>
                                 <Grid container spacing={2} className="filters ">
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <FormControl>
+                                        <FormControl  >
                                             <FormLabel id="demo-row-radio-buttons-group-label">Are You Experienced</FormLabel>
                                             <RadioGroup
                                                 row
                                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                                 name="row-radio-buttons-group"
                                             >
-                                                <FormControlLabel value="Yes" control={<Radio />} label="Yes" {...register("Experience", {
-                                                    required: " Enter your Experience",
-                                                })} />
+                                                <FormControlLabel value="Yes" control={<Radio />} label="Yes"  {...register("Experience", {
+                                            required: " Enter your Experience",
+                                        })}/>
                                                 <FormControlLabel value="No" control={<Radio />} label="No"  {...register("Experience", {
-                                                    required: " Enter your Experience",
-                                                })} />
+                                            required: " Enter your Experience",
+                                        })}/>
                                             </RadioGroup>
                                             {errors.Experience && (
                                                 <p className="errormsg">{errors.Experience.message}</p>
                                             )}
                                         </FormControl>
+                                        {/* <label htmlFor="">Are You Experienced</label><br />
+                                        <label htmlFor="yes">Yes</label>
+                                        <input {...register("Experience", { required: "Please upload your resume" })} type="radio"  value="Yes" />
+                                        <label htmlFor="no">No</label>                                        
+                                        <input {...register("Experience", { required: "Please upload your resume" })} type="radio"  value="No" /> */}
+
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-
-                                        <TextFields
-                                            variant="outlined"
-                                            fullWidth
-                                            value={value}
-                                            onChange={(e) => setValue(e.target.value)}
-                                            select
-                                            label="Where You Found Us"
-                                        // {...register("social", { required: "Select an option" })}
-                                        >
-                                            <MenuItem key={1} value="Instagram">
+                                        <label htmlFor="">Where You Found Us</label><br />
+                                        <select name="" id="selection" {...register('Reference', { required: "Please upload your resume" })}>
+                                            <option value="">Select An Option</option>
+                                            <option value="Instagram">
                                                 Instagram
-                                            </MenuItem>
-                                            <MenuItem key={2} value="Facebook">
+                                            </option>
+                                            <option value="Facebook">
                                                 Facebook
-                                            </MenuItem>
-                                            <MenuItem key={3} value="Linkedin">
+                                            </option>
+                                            <option value="Linkedin">
                                                 Linkedin
-                                            </MenuItem>
-                                            <MenuItem key={4} value="Whatsapp">
+                                            </option>
+                                            <option value="Whatsapp">
                                                 Whatsapp
-                                            </MenuItem>
-                                            <MenuItem key={5} value="From Others">
+                                            </option>
+                                            <option value="From Others">
                                                 From Others
-                                            </MenuItem>
-                                        </TextFields>
-                                        {errors.social && (
-                                            <p className="errormsg">{errors.social.message}</p>
+                                            </option>
+                                        </select>
+                                        {errors.Reference && (
+                                            <p className="errormsg">{errors.Reference.message}</p>
                                         )}
 
                                     </Grid>
                                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                                        <TextFields fullWidth label="Upload Your Resume" type="file" variant="outlined" InputLabelProps={{ shrink: true }}   {...register("resume", {
-                                            required: "Please upload your resume",
-                                        })}
+                                        <TextFields fullWidth label="Upload Your Resume" type="file" variant="outlined"
+                                            className='custom-file-input' InputLabelProps={{ shrink: true }}   {...register("resume1", {
+                                                required: "Please upload your resume",
+                                            })}
 
                                         />
-                                        {errors.resume && (
-                                            <p className="errormsg">{errors.resume.message}</p>
+                                        {errors.resume1 && (
+                                            <p className="errormsg">{errors.resume1.message}</p>
                                         )}
+                                        {/* <input type="file"
+                                            className='custom-file-input'  {...register("resume", {
+                                                required: "Please upload your resume",
+                                            })} /> */}
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -222,9 +215,8 @@ export default function RegisterForms() {
                                     rows={8}
                                     variant="outlined"
                                 />
-
                             </Grid>
-                            <Button sx={{ margin: "auto" }} onClick={handleOpen} className="mt-5 subbtn" type="submit" variant="contained">Submit</Button>
+                            <Button sx={{ margin: "auto" }}   onClick={() => setValue("Dates", newdate )} className="mt-5 subbtn" type="submit" variant="contained">Submit</Button>
                             <Modal
                                 aria-labelledby="transition-modal-title"
                                 aria-describedby="transition-modal-description"
