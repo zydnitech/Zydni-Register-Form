@@ -4,7 +4,7 @@ import RegisterForms from '../componenets/RegisterForms'
 export default function index() {
   return (
     <div>
-  <RegisterForms/>
+      <RegisterForms />
     </div>
   )
 }
