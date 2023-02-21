@@ -1,6 +1,6 @@
 import { TextFields, Buttons, Modal_Style } from './muistyle';
 import { ThumbUp } from '@mui/icons-material';
-import { Button, FormControl, FormControlLabel, FormLabel, Grid, Modal, Radio, RadioGroup, Stack, TextField } from
+import { Button, FormControl, FormControlLabel, FormLabel, Grid, Modal, Radio, RadioGroup, Stack } from
     '@mui/material'
 import { Box } from '@mui/system'
 import axios from 'axios';
@@ -10,18 +10,16 @@ import { useForm } from "react-hook-form";
 import { apiBaseUrl } from '../config/config';
 
 export default function RegisterForms() {
-    // const [openmodal, setopenmodal] = useState('')
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
     const {
         register,
-        handleSubmit, setValue,
+        handleSubmit,
         formState: { errors },
     } = useForm();
 
     const onSubmit = (d) => {
         var bodyFormData = new FormData();
-        console.log(d);
         for (const [key, value] of Object.entries(d)) {
             if (key == 'resumeFile') {
                 console.log(value);
@@ -36,11 +34,11 @@ export default function RegisterForms() {
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
         }).then((res) => {
-                setOpen(true)
-                console.log('YOUR DATA IS SUBMITTED', res);
-            }).catch((e) => {
-                console.log('ERROR OCCURED', e);
-            })
+            setOpen(true)
+            console.log('YOUR DATA IS SUBMITTED', res);
+        }).catch((e) => {
+            console.log('ERROR OCCURED', e);
+        })
     }
     return (
         <Box className="container mb-5 bodycontainer">
@@ -160,7 +158,7 @@ export default function RegisterForms() {
                                     {...register("resume1", { required: "Please upload your resume" , })} /> */}
                                         <Buttons variant="outlined" component="label" fullWidth>
                                             Upload Your Resume
-                                            <input type="file" hidden {...register("resumeFile", {
+                                            <input type="file" hidden name='Resume ' {...register("resumeFile", {
                                                 required: "Please upload your resume",
                                             })} />
                                         </Buttons>
@@ -177,27 +175,7 @@ export default function RegisterForms() {
                             <Button sx={{ margin: "auto" }} className="mt-5 subbtn" type="submit"
                                 variant="contained">Submit</Button>
 
-                            {/* <div className="modal fade" id="submitModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered">
-                            <div className="modal-content">
-                                <div className="modal-header">
 
-                                    <p className="modal-title" id="exampleModalLabel"> </p>
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div className="modal-body row">
-                                    <div className="col-3">
-                                        <ThumbUp sx={{ marginLeft: '20px' , fontSize: '75px' }} />
-                                    </div>
-                                    <div className="col-9">It is our pleasure to acknowledge the receipt of your
-                                        application, and we will review it and get back to you as soon as possible.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
 
                         </Grid>
                     </form>
