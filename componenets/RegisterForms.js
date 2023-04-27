@@ -39,6 +39,7 @@ export default function RegisterForms() {
             console.log('YOUR DATA IS SUBMITTED', res);
         }).catch((e) => {
             console.log('ERROR OCCURED', e);
+            alert(e.response.data)
         })
     }
     return (
