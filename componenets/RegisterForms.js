@@ -18,7 +18,9 @@ export default function RegisterForms() {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (d) => {
+    const onSubmit = (e, d) => {
+        // alert('wait for the submittion')
+        setOpen(true)
         var bodyFormData = new FormData();
         for (const [key, value] of Object.entries(d)) {
             if (key == 'resumeFile') {
@@ -34,7 +36,6 @@ export default function RegisterForms() {
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
         }).then((res) => {
-            setOpen(true)
             console.log('YOUR DATA IS SUBMITTED', res);
         }).catch((e) => {
             console.log('ERROR OCCURED', e);
@@ -186,7 +187,7 @@ export default function RegisterForms() {
                     <Box sx={Modal_Style}>
                         <div className="row">
                             <div className="col-4">
-                                <ThumbUp sx={{ marginLeft: '20px', fontSize: '75px' }} />
+                                <ThumbUp sx={{ margin: 'auto', display: 'grid', height: '100%', fontSize: '75px' }} />
                             </div>
                             <div className="col-8">It is our pleasure to acknowledge the receipt of your
                                 application, and we will review it and get back to you as soon as possible.

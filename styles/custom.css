@@ -1,13 +1,15 @@
-body{
+body {
     color: white;
     background-image: url(../public/img/Group\ 6.jpg);
-    background-repeat:no-repeat ;
+    background-repeat: no-repeat;
     background-position: center;
 }
-.pageimg{
+
+.pageimg {
     height: 100vh;
     object-fit: contain;
 }
+
 .company-header {
     border: 1px solid transparent;
     border-radius: 10px;
@@ -15,10 +17,12 @@ body{
     margin-top: 20px;
     background-color: transparent;
 }
-.companyLogo{
+
+.companyLogo {
     margin: auto;
     display: block;
 }
+
 .company-form {
     border: 1px solid transparent;
     border-radius: 10px;
@@ -32,65 +36,75 @@ body{
 }
 
 .subbtn {
-    width: 100px;
-    border-radius: 20px;
-    background-color: #F14722;
+
+    border-radius: 20px !important;
+    background-color: #F14722 !important;
 }
 
 .subbtn:hover {
-    background-color: #239B99;
+    background-color: #239B99 !important;
     animation: btnani 1s;
 }
 
 @keyframes btnani {
     from {
-        background-color: #F14722;
+        background-color: #F14722 !important;
     }
 
     to {
-        background-color: #239B99;
+        background-color: #239B99 !important;
     }
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
-#selection{
+
+#selection {
     width: 100%;
     height: 50px;
     border-radius: 10px;
 }
-#selection:hover , .custom-file-input:hover{
+
+#selection:hover,
+.custom-file-input:hover {
     border-image: linear-gradient(to right, #F14722, #239B99) 1
 }
+
 input[type="radio"] {
     cursor: pointer;
     margin-right: 23px;
     width: 55px;
     height: 22px;
 }
-select{
+
+select {
     background-color: transparent;
 }
-label{
+
+label {
     color: black;
 }
+
 /* .custom-file-input::-webkit-file-upload-button {
     visibility: hidden;
   }
-  
+
   .custom-file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
   } */
-  .modal-title , .modal-body{
+.modal-title,
+.modal-body {
     color: black;
-  }
-  .custom-file-input::before {
+}
+
+.custom-file-input::before {
     border-radius: 10px;
     padding: 16px 8px;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
     cursor: pointer;
-  }
+}

@@ -44,6 +44,7 @@ export const Modal_Style = {
     width: 400,
     bgcolor: 'white',
     boxShadow: 24,
-    p: 4,
-    color: "black"
+    p: 3,
+    color: "black",
+    borderRadius: '10px'
 };
