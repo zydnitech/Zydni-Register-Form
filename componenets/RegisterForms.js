@@ -12,15 +12,16 @@ import { apiBaseUrl } from '../config/config';
 export default function RegisterForms() {
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
+    const [open_error, setOpen_error] = useState(false);
+    const handleClose_error = () => setOpen_error(false);
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (e, d) => {
-        // alert('wait for the submittion')
-        setOpen(true)
+    const onSubmit = (d) => {
+
         var bodyFormData = new FormData();
         for (const [key, value] of Object.entries(d)) {
             if (key == 'resumeFile') {
@@ -36,10 +37,12 @@ export default function RegisterForms() {
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
         }).then((res) => {
+            setOpen(true)
             console.log('YOUR DATA IS SUBMITTED', res);
         }).catch((e) => {
+            setOpen_error(true)
+
             console.log('ERROR OCCURED', e);
-            alert(e.response.data)
         })
     }
     return (
@@ -188,7 +191,7 @@ export default function RegisterForms() {
                     <Box sx={Modal_Style}>
                         <div className="row">
                             <div className="col-4">
-                                <ThumbUp sx={{ margin: 'auto', display: 'grid', height: '100%', fontSize: '75px' }} />
+                                <ThumbUp sx={{ marginLeft: '20px', fontSize: '75px' }} />
                             </div>
                             <div className="col-8">It is our pleasure to acknowledge the receipt of your
                                 application, and we will review it and get back to you as soon as possible.
@@ -197,6 +200,19 @@ export default function RegisterForms() {
 
                     </Box>
                 </Modal>
+                <Modal open={open_error} onClose={handleClose_error}>
+                    <Box sx={Modal_Style}>
+                        <div className="row">
+                            <div className="col-4">
+                                <ThumbUp sx={{ marginLeft: '20px', fontSize: '75px' }} />
+                            </div>
+                            <div className="col-8">This email already exists in our database
+                            </div>
+                        </div>
+
+                    </Box>
+                </Modal>
+
             </div>
         </Box>
     )
