@@ -1,5 +1,5 @@
-import { TextFields, Buttons, Modal_Style } from './muistyle';
-import { ThumbUp } from '@mui/icons-material';
+import { TextFields, Buttons, Modal_Style, Modal_btn } from './muistyle';
+import { Error, ThumbUp, Timer } from '@mui/icons-material';
 import { Button, FormControl, FormControlLabel, FormLabel, Grid, Modal, Radio, RadioGroup, Stack } from
     '@mui/material'
 import { Box } from '@mui/system'
@@ -14,6 +14,8 @@ export default function RegisterForms() {
     const handleClose = () => setOpen(false);
     const [open_error, setOpen_error] = useState(false);
     const handleClose_error = () => setOpen_error(false);
+    const [open_submit, setOpen_submit] = useState(false);
+    const handleClose_submit = () => setOpen_submit(false);
     const {
         register,
         handleSubmit,
@@ -21,7 +23,10 @@ export default function RegisterForms() {
     } = useForm();
 
     const onSubmit = (d) => {
-
+        setOpen_submit(true)
+        setTimeout(() => {
+            setOpen_submit(false)
+        }, 3000);
         var bodyFormData = new FormData();
         for (const [key, value] of Object.entries(d)) {
             if (key == 'resumeFile') {
@@ -41,7 +46,6 @@ export default function RegisterForms() {
             console.log('YOUR DATA IS SUBMITTED', res);
         }).catch((e) => {
             setOpen_error(true)
-
             console.log('ERROR OCCURED', e);
         })
     }
@@ -191,9 +195,9 @@ export default function RegisterForms() {
                     <Box sx={Modal_Style}>
                         <div className="row">
                             <div className="col-4">
-                                <ThumbUp sx={{ marginLeft: '20px', fontSize: '75px' }} />
+                                <ThumbUp sx={Modal_btn} />
                             </div>
-                            <div className="col-8">It is our pleasure to acknowledge the receipt of your
+                            <div className="col-8 m-auto">It is our pleasure to acknowledge the receipt of your
                                 application, and we will review it and get back to you as soon as possible.
                             </div>
                         </div>
@@ -204,9 +208,20 @@ export default function RegisterForms() {
                     <Box sx={Modal_Style}>
                         <div className="row">
                             <div className="col-4">
-                                <ThumbUp sx={{ marginLeft: '20px', fontSize: '75px' }} />
+                                <Error sx={Modal_btn} />
                             </div>
-                            <div className="col-8">This email already exists in our database
+                            <div className="col-8 m-auto">This email already exists in our database
+                            </div>
+                        </div>
+                    </Box>
+                </Modal>
+                <Modal open={open_submit} onClose={handleClose_submit}>
+                    <Box sx={Modal_Style}>
+                        <div className="row">
+                            <div className="col-4">
+                                <Timer sx={Modal_btn} />
+                            </div>
+                            <div className="col-8 m-auto">The data is being verified. Please wait!!!
                             </div>
                         </div>
 

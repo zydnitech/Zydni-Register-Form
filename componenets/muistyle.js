@@ -48,3 +48,8 @@ export const Modal_Style = {
     color: "black",
     borderRadius: '10px'
 };
+export const Modal_btn = {
+    margin: 'auto',
+    height: '100%',
+    display: 'block', fontSize: '75px'
+}
